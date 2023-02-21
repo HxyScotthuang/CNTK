@@ -140,11 +140,11 @@ for i in range(N):
 #####Calculate kernel values.
 #####Below we provide a naive implementation using for-loops.
 #####Parallelize this part according to your specific computing enviroment to utilize multiple GPUs.
-# H = np.zeros((N, N), dtype = np.float32)
-# for i in range(N):
-# 	for j in range(N):
-# 		H[i][j] = xz(X[i], X[j], L[i], L[j], iL[i], iL[j])
-H = np.fromfunction(lambda i, j: xz(X[i], X[j], L[i], L[j], iL[i], iL[j]), (N,N), dtype = np.float32)
+H = np.zeros((N, N), dtype = np.float32)
+for i in range(N):
+	for j in range(N):
+		H[i][j] = xz(X[i], X[j], L[i], L[j], iL[i], iL[j])
+#  H = np.fromfunction(lambda i, j: xz(X[i], X[j], L[i], L[j], iL[i], iL[j]), (N,N), dtype = np.float32)
 #####
 
 #Solve kernel regression.
